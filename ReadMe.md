@@ -38,10 +38,28 @@ Test that the script runs on startup by rebooting the pi: `sudo reboot`
 
 SIDEBAR: This was all done on a RPi3, but I then moved the SD card to a Pi zero to test and it boots into the PD patch just fine, plays sound through the bonnet, etc.
 
-NOW TO GET PYTHON AND PWM HAPPENING
+NOW TO GET PYTHON AND OSC AND PWM HAPPENING
 
 Installing Python PWM library:
 ```
 sudo apt update && sudo apt upgrade -y
 sudo pip install python-osc
+sudo pip install adafruit-pca9685
 ```
+
+Copy Python script for [simple LED chase display](https://github.com/jts3k/PiNotes/blob/master/Python/LED-chase.py) to Pi and test
+
+copy: `scp /Users/stilesj/Documents/GitHub/PiNotes/Python/LED-chase.py pi@192.168.1.194:Python`
+test: `python Python/LED-chase.py`
+
+Add python script to startup script, the source now reads:
+
+```
+echo "Starting Pd..."
+pd -nogui -rt /home/pi/PD/launch.pd &
+python Python/LED-chase.py &
+```
+
+Hmm python-osc example script is giving errors and also more people seem to be using pyOSC on RPi so I'm gonna try pyOSC, installing via `sudo pip install pyOSC`
+
+Looks like we need some third-party PD objects, I found compiling them on the Pi to be painful so I got the objects by running PD on the Pi and doing 'Help/Find externals' then I got iemnet and OSC.  These I downloaded to PD/lib and then I had to add the new folders inside lib to PD's path preferences.  Oh boy.
