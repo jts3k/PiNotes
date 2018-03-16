@@ -9,13 +9,15 @@ or run pydoc pyOSC.py. you can also get the docs by opening a python shell and d
 """
 
 #! /usr/bin/python
-
+from __future__ import division
 import socket
 import OSC
 import time, threading
-
+import Adafruit_PCA9685
 import os
 import socket
+
+pwm = Adafruit_PCA9685.PCA9685()
 
 if os.name != "nt":
     import fcntl
@@ -83,12 +85,17 @@ def printing_handler(addr, tags, stuff, source):
     print "data : %s" % stuff
     print "---"
 
+# messages will control numberOfLEDs
+def LED_handler(addr, tags, stuff, source):
+#    print int(addr.strip('-LED').strip('/'))
+    pwm.set_pwm(int(addr.strip('-LED').strip('/')), 0, stuff[0])
+
 s.addMsgHandler("/test", printing_handler) # adding our function, first parameter corresponds to the OSC address you want to listen to
 
 # adding LED inputs...
 
 for x in range (0, LEDs):
-    s.addMsgHandler("/{l}-LED".format(l=x), printing_handler)
+    s.addMsgHandler("{l}-LED".format(l=x), LED_handler)
 
 
 # just checking which handlers we have added
