@@ -19,6 +19,11 @@ import socket
 
 pwm = Adafruit_PCA9685.PCA9685()
 
+f = 60
+pwm.set_pwm_freq(f)
+print ("PWM frequency is {f}".format(f=f))
+time.sleep(2)
+
 if os.name != "nt":
     import fcntl
     import struct
@@ -61,7 +66,6 @@ print("Listening on {i}, {p}".format(i=ip, p=port))
 receive_address = ip, port
 # receive_address = "127.0.0.1", 9000
 
-time.sleep(1)
 
 # OSC Server. there are three different types of server.
 s = OSC.OSCServer(receive_address) # basic

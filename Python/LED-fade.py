@@ -16,14 +16,17 @@ pwm = Adafruit_PCA9685.PCA9685()
 
 #pwm.set_pwm_freq(60)
 
-numberOfLEDs = 16
+f = 1000
 x = 0
+pwm.set_pwm_freq(f)
+print ("PWM frequency is {f}".format(f=f))
+time.sleep(2)
 
 print('DOING THANGS, press Ctrl-C to quit...')
 while True:
-    pwm.set_pwm(x, 0, 0)
-    x = x + 1
-    if x == numberOfLEDs:
+    pwm.set_pwm(0, 0, x)
+    x = x + 25
+    if x >= 4095:
         x = 0
-    pwm.set_pwm(x, 0, 4095)
-    time.sleep(0.5)
+    print ("PWM equals {x}".format(x=x))
+    time.sleep(0.05)

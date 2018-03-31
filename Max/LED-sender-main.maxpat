@@ -38,6 +38,108 @@
 		"subpatcher_template" : "myshit",
 		"boxes" : [ 			{
 				"box" : 				{
+					"id" : "obj-29",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 505.0, 904.0, 169.0, 36.0 ],
+					"presentation_rect" : [ 498.0, 921.0, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "Turn on audio to generate sound and OSC"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-25",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 685.0, 916.0, 24.0, 24.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-23",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 1009.0, 629.0, 169.0, 21.0 ],
+					"style" : "",
+					"text" : "<<-- IP address of RPi"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"bgmode" : 0,
+					"border" : 0,
+					"clickthrough" : 0,
+					"enablehscroll" : 0,
+					"enablevscroll" : 0,
+					"extract" : 1,
+					"id" : "obj-18",
+					"lockeddragscroll" : 0,
+					"maxclass" : "bpatcher",
+					"name" : "bp.Reverb 1.maxpat",
+					"numinlets" : 4,
+					"numoutlets" : 2,
+					"offset" : [ 0.0, 0.0 ],
+					"outlettype" : [ "signal", "signal" ],
+					"patching_rect" : [ 715.5, 663.0, 190.0, 116.0 ],
+					"varname" : "bp.Reverb 2",
+					"viewvisibility" : 1
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"fontname" : "Monaco",
+					"id" : "obj-14",
+					"maxclass" : "live.gain~",
+					"numinlets" : 2,
+					"numoutlets" : 5,
+					"outlettype" : [ "signal", "signal", "", "float", "list" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 718.5, 807.0, 58.0, 136.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_longname" : "live.gain~",
+							"parameter_shortname" : "live.gain~",
+							"parameter_type" : 0,
+							"parameter_mmin" : -70.0,
+							"parameter_mmax" : 6.0,
+							"parameter_initial" : [ 0.0 ],
+							"parameter_unitstyle" : 4
+						}
+
+					}
+,
+					"showname" : 0,
+					"slidercolor" : [ 1.0, 1.0, 1.0, 1.0 ],
+					"varname" : "live.gain~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 718.5, 963.0, 39.0, 23.0 ],
+					"style" : "",
+					"text" : "dac~"
+				}
+
+			}
+, 			{
+				"box" : 				{
 					"id" : "obj-28",
 					"maxclass" : "newobj",
 					"numinlets" : 6,
@@ -72,7 +174,6 @@
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 711.0, 368.335754, 331.0, 152.0 ],
-					"presentation_rect" : [ 867.0, 95.940002, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -95,10 +196,11 @@
 					"id" : "obj-17",
 					"maxclass" : "newobj",
 					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 718.5, 629.0, 147.0, 23.0 ],
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 718.5, 629.0, 284.0, 23.0 ],
 					"style" : "",
-					"text" : "poly~ LED-sender 16"
+					"text" : "poly~ LED-sender 16 @args 192.168.1.10"
 				}
 
 			}
@@ -111,7 +213,6 @@
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 575.0, 172.0, 50.0, 23.0 ],
-					"presentation_rect" : [ 575.0, 172.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -126,7 +227,6 @@
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 509.0, 161.0, 50.0, 23.0 ],
-					"presentation_rect" : [ 509.0, 161.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -139,7 +239,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 501.0, 285.0, 75.0, 23.0 ],
-					"presentation_rect" : [ 501.0, 285.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "/7-LED $1"
 				}
@@ -154,7 +253,6 @@
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 443.0, 166.0, 50.0, 23.0 ],
-					"presentation_rect" : [ 443.0, 166.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -169,7 +267,6 @@
 					"outlettype" : [ "", "bang" ],
 					"parameter_enable" : 0,
 					"patching_rect" : [ 377.0, 155.0, 50.0, 23.0 ],
-					"presentation_rect" : [ 377.0, 155.0, 0.0, 0.0 ],
 					"style" : ""
 				}
 
@@ -182,7 +279,6 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 364.5, 279.0, 75.0, 23.0 ],
-					"presentation_rect" : [ 369.0, 278.0, 0.0, 0.0 ],
 					"style" : "",
 					"text" : "/1-LED $1"
 				}
@@ -271,8 +367,50 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-2", 1 ],
+					"source" : [ "obj-14", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"source" : [ "obj-14", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
+					"source" : [ "obj-17", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 1 ],
+					"source" : [ "obj-18", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-14", 0 ],
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-17", 0 ],
 					"source" : [ "obj-21", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"source" : [ "obj-25", 0 ]
 				}
 
 			}
@@ -333,10 +471,31 @@
 
 			}
  ],
+		"parameters" : 		{
+			"obj-18::obj-25" : [ "Damping", "Damping", 0 ],
+			"obj-18::obj-47" : [ "bypass", "bypass", 0 ],
+			"obj-14" : [ "live.gain~", "live.gain~", 0 ],
+			"obj-18::obj-26" : [ "Decay", "Decay", 0 ],
+			"obj-18::obj-1" : [ "Size", "Size", 0 ],
+			"obj-18::obj-28" : [ "Mix", "Mix", 0 ]
+		}
+,
 		"dependency_cache" : [ 			{
 				"name" : "LED-sender.maxpat",
 				"bootpath" : "~/Documents/GitHub/PiNotes/Max",
 				"patcherrelativepath" : ".",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "bp.Reverb 1.maxpat",
+				"bootpath" : "C74:/packages/BEAP/clippings/BEAP/Effects",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "M4L.cross1~.maxpat",
+				"bootpath" : "C74:/patchers/m4l/Tools resources",
 				"type" : "JSON",
 				"implicit" : 1
 			}
@@ -345,11 +504,6 @@
 		"styles" : [ 			{
 				"name" : "wm20150520a",
 				"default" : 				{
-					"fontname" : [ "Monaco" ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"accentcolor" : [ 0.85109, 0.842249, 0.830042, 1.0 ],
-					"elementcolor" : [ 0.780914, 0.800218, 0.843168, 1.0 ],
-					"color" : [ 0.18882, 0.288104, 0.351331, 1.0 ],
 					"bgfillcolor" : 					{
 						"type" : "gradient",
 						"color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
@@ -360,7 +514,12 @@
 						"autogradient" : 0
 					}
 ,
-					"bgcolor" : [ 0.982943, 0.978557, 0.972212, 1.0 ]
+					"accentcolor" : [ 0.85109, 0.842249, 0.830042, 1.0 ],
+					"color" : [ 0.18882, 0.288104, 0.351331, 1.0 ],
+					"bgcolor" : [ 0.982943, 0.978557, 0.972212, 1.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"elementcolor" : [ 0.780914, 0.800218, 0.843168, 1.0 ],
+					"fontname" : [ "Monaco" ]
 				}
 ,
 				"parentstyle" : "",
@@ -373,12 +532,11 @@
 		"accentcolor" : [ 0.85109, 0.842249, 0.830042, 1.0 ],
 		"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
 		"bgfillcolor_type" : "gradient",
-		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 		"bgfillcolor_color1" : [ 1.0, 0.999974, 0.999991, 1.0 ],
 		"bgfillcolor_color2" : [ 0.813701, 0.827634, 0.818829, 1.0 ],
+		"bgfillcolor_color" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
 		"bgfillcolor_angle" : 270.0,
-		"bgfillcolor_proportion" : 0.39,
-		"bgfillcolor_autogradient" : 0
+		"bgfillcolor_proportion" : 0.39
 	}
 
 }
