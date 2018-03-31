@@ -1,3 +1,9 @@
+## Disk Image [here](https://drive.google.com/file/d/1zVlfoxGsFtwZIYpvnRLcRFOTBBEWlb-O/view?usp=sharing)
+
+___
+
+### Setup notes
+
 Installed Raspbian Stretch Full, copied to SD card via `Pi Filler` app
 
 Open terminal and do some configuring via `sudo raspi-config`
@@ -63,3 +69,25 @@ python Python/LED-chase.py &
 Hmm python-osc example script is giving errors and also more people seem to be using pyOSC on RPi so I'm gonna try pyOSC, installing via `sudo pip install pyOSC`
 
 Looks like we need some third-party PD objects, I found compiling them on the Pi to be painful so I got the objects by running PD on the Pi and doing 'Help/Find externals' then I got iemnet and OSC.  These I downloaded to PD/lib and then I had to add the new folders inside lib to PD's path preferences.  Oh boy.
+
+Made the Pi auto connect to various networks by adding network info:
+
+`sudo nano /etc/wpa_supplicant/wpa_supplicant.conf`
+
+```
+network={
+        ssid="MOMNET"
+        psk="3.14ispi"
+        key_mgmt=WPA-PSK
+}
+
+network={
+        ssid="MediaLabLighting"
+        psk="the media lab"
+        key_mgmt=WPA-PSK
+}
+```
+
+Installing software for screensharing:
+
+```sudo apt-get install tightvncserver```
