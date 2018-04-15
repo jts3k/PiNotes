@@ -17,6 +17,8 @@ import Adafruit_PCA9685
 import os
 import socket
 
+time.sleep(5)
+
 pwm = Adafruit_PCA9685.PCA9685()
 
 if os.name != "nt":
